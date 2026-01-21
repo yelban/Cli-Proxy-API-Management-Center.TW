@@ -65,6 +65,47 @@ Claude Code 會自動執行上述流程並報告結果。
 
 ---
 
+## 建立 Release
+
+推送以 `v` 開頭的 tag，CI 會自動建立 GitHub Release。
+
+### 發布步驟
+
+```bash
+# 1. 推送 commits
+git push
+
+# 2. 建立並推送 tag
+git tag v1.2.22
+git push origin v1.2.22
+```
+
+CI 會自動：
+1. Build → 產生 `dist/index.html`
+2. 重命名為 `management.html`
+3. 建立 GitHub Release 並附加檔案
+
+### Fork 專案首次發布
+
+Fork 的專案預設禁用 GitHub Actions，需手動啟用：
+
+1. 前往 repository 的 **Actions** 頁籤
+2. 點擊 **"I understand my workflows, go ahead and enable them"**
+3. 重新推送 tag 觸發 workflow：
+
+```bash
+# 刪除並重新推送 tag
+git push origin :refs/tags/v1.2.22
+git push origin v1.2.22
+```
+
+### 查看 Release 狀態
+
+- CI 進度：`https://github.com/<user>/<repo>/actions`
+- Release 頁面：`https://github.com/<user>/<repo>/releases`
+
+---
+
 ## 詳細文件
 
 完整的繁體中文化實作細節請參考：[`docs/plan/zh-TW-localization.md`](./plan/zh-TW-localization.md)

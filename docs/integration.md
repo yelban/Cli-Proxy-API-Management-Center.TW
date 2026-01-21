@@ -30,8 +30,22 @@ CLIProxyAPI（Go 後端）
 確保本專案有 GitHub Release（推送 tag 即可觸發 CI）：
 
 ```bash
+git push              # 先推送 commits
 git tag v1.0.0
 git push origin v1.0.0
+```
+
+#### Fork 專案首次發布
+
+Fork 的專案預設禁用 GitHub Actions，需手動啟用：
+
+1. 前往 repository 的 **Actions** 頁籤
+2. 點擊 **"I understand my workflows, go ahead and enable them"**
+3. 重新推送 tag 觸發 workflow：
+
+```bash
+git push origin :refs/tags/v1.0.0   # 刪除遠端 tag
+git push origin v1.0.0              # 重新推送
 ```
 
 ### CLIProxyAPI 設定
