@@ -29,8 +29,13 @@ export const useLanguageStore = create<LanguageState>()(
 
       toggleLanguage: () => {
         const { language, setLanguage } = get();
-        const newLanguage: Language = language === 'zh-CN' ? 'en' : 'zh-CN';
-        setLanguage(newLanguage);
+        // 循環：繁體 → 簡體 → 英文 → 繁體
+        const cycle: Record<Language, Language> = {
+          'zh-TW': 'zh-CN',
+          'zh-CN': 'en',
+          en: 'zh-TW'
+        };
+        setLanguage(cycle[language]);
       }
     }),
     {

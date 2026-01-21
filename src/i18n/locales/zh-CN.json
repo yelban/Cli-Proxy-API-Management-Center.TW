@@ -886,7 +886,8 @@
   },
   "language": {
     "switch": "语言",
-    "chinese": "中文",
+    "traditional": "繁體中文",
+    "chinese": "简体中文",
     "english": "English"
   },
   "theme": {
